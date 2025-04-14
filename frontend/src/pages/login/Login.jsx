@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -11,37 +12,37 @@ const Login = () => {
 
         <form className="mt-6">
           <div className="mb-4">
-            <label htmlFor="username" className="text-gray-300">
+            <label htmlFor="username" className="text-base text-white label-text">
               Username
             </label>
             <input
               id="username"
               type="text"
               placeholder="Enter username"
-              className="w-full px-3 py-2 rounded-md bg-gray-200 text-gray-800 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-black text-white input input-bordered h-10"
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="text-gray-300">
+            <label htmlFor="password" className="text-base text-white label-text">
               Password
             </label>
             <input
               id="password"
               type="password"
               placeholder="Enter password"
-              className="w-full px-3 py-2 rounded-md bg-gray-200 text-gray-800 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-black text-white input input-bordered h-10"
             />
-            <a
-              href="#"
-              className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+            <Link
+              to="/signup"
+              className="text-sm hover:underline hover:text-blue-200 mt-2 inline-block"
             >
               {"Don't"} have an account?
-            </a>
+            </Link>
           </div>
           <div>
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded-md text-white text-center"
+              className="btn bg-black text-white btn-block btn-sm mt-2 border border-slate-700"
             >
               Log In
             </button>
