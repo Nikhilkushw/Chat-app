@@ -7,8 +7,6 @@ import userRoutes from './routes/user.routes.js'
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 
-// Start video at 01:26:00
-
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
