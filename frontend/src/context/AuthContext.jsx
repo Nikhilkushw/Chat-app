@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
@@ -9,9 +9,14 @@ export const useAuthContext = () => {
 }
 
 export const AuthContextProvider = ({ children }) => {
-  const [authUser, setAuthUser] = useState(
-    JSON.parse(localStorage.getItem("chat-user")) || null
-  );
+  const [authUser, setAuthUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("chart-user"); // ✅ fixed key name
+    if (storedUser) {
+      setAuthUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ authUser, setAuthUser }}>

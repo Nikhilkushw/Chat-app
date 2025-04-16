@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  // Video start at 03:04:00
+  // Video start at 03:29:00
   <StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
