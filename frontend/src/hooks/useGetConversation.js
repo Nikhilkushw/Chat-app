@@ -1,30 +1,33 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
-const useGetConversation = () => {
-    const [loading, setLoading] = useState(false);
-    const [conversaton, setConversation] = useState([]);
+const useGetConversations = () => {
+  const [loading, setLoading] = useState(false);
+  const [conversations, setConversations] = useState([]);
 
-    useEffect(() => {
-        const getCoversation = async () => {
-            setLoading(true);
-            try {
-                const res = await axios.get('/api/users');
-                const data = await res.data;
-                if(data.error){
-                    throw new Error(data.error);
-                }
-                setConversation(data);
-            } catch (error) {
-                toast.error(error.message);
-            }finally{
-                setLoading(false);
-            }
+  useEffect(() => {
+    const getConversations = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get("/api/users", { withCredentials: true });
+        const data = res.data;
+
+        if (data.error) {
+          throw new Error(data.error);
         }
-        getCoversation();
-    },[])
-    return {loading, conversaton};
-}
+        setConversations(data);
+      } catch (error) {
+        toast.error(error.response?.data?.error || error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-export default useGetConversation;
+    getConversations();
+  }, []);
+
+  return { loading, conversations };
+};
+
+export default useGetConversations;

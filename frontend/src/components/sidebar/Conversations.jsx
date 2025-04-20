@@ -4,19 +4,21 @@ import useGetConversation from "../../hooks/useGetConversation";
 import { getRandomEmoji } from "../../utils/emojis";
 
 const Conversations = () => {
-  const { loading, conversaton } = useGetConversation();
-  console.log("Conversaton : ", conversaton);
+  const { loading, conversations } = useGetConversation();
+
   return (
     <div className="py-2 flex flex-col overflow-y-auto">
-      {conversaton.map((conversation, idx) => (
-        <Conversation
-          key={conversation._id}
-          conversation={conversation}
-          emoji={getRandomEmoji()}
-          lastIdx={idx === Conversations.length - 1}
-        />
-      ))}
-      {loading ? <span>loading...</span> : null}
+      {conversations?.length > 0 &&
+        conversations.map((conversation, idx) => (
+          <Conversation
+            key={conversation._id} // ✅ fixed key
+            conversation={conversation}
+            emoji={getRandomEmoji()}
+            lastIdx={idx === conversations.length - 1} // ✅ fixed variable
+          />
+        ))}
+
+      {loading && <span className="text-center text-white mt-4">Loading...</span>}
     </div>
   );
 };

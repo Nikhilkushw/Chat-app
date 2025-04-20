@@ -4,13 +4,17 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
+import { SocketContextProvider } from "./context/SocketContext.jsx";
 
+// Rendering the app with strict mode and required context providers
 createRoot(document.getElementById("root")).render(
-  // Video start at 03:29:00
   <StrictMode>
     <BrowserRouter>
+      {/* Wrapping App with Auth and Socket context providers */}
       <AuthContextProvider>
-        <App />
+        <SocketContextProvider>
+          <App />
+        </SocketContextProvider>
       </AuthContextProvider>
     </BrowserRouter>
   </StrictMode>
