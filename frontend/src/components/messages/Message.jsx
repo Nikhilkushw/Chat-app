@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuthContext } from "../../context/AuthContext";
-import useConversation from "../../Zustand/useConversation";
+import useConversation from "../../zustand/useConversation";
 import { extractTime } from "../../utils/exactTime";
 
 const Message = ({ message }) => {

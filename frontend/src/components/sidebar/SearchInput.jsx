@@ -2,7 +2,7 @@ import { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
 import useGetConversation from "../../hooks/useGetConversation";
 import toast from "react-hot-toast";
-import useConversation from "../../Zustand/useConversation";
+import useConversation from "../../zustand/useConversation";
 
 const SearchInput = () => {
 	const [search, setSearch] = useState("");
